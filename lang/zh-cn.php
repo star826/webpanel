@@ -269,9 +269,9 @@ $lang['datetime_now'] = '现在';
 
 
 // Linodes
-$lang['linode'] = 'Linode';
-$lang['linodes'] = 'Linodes';
-$lang['linodeplans'] = 'Linode Plans';
-$lang['datacenters'] = 'Data Centers';
-$lang['distributions'] = 'Distributions';
-$lang['kernels'] = 'Kernels';
+$lang['linode'] = '节点';
+$lang['linodes'] = '主机名';
+$lang['linodeplans'] = '节点套餐';
+$lang['datacenters'] = '数据中心';
+$lang['distributions'] = '分配';
+$lang['kernels'] = '内核';
