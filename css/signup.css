@@ -1,0 +1,71 @@
+.bgdarkgrey {
+    background-color:#555;
+}
+.tableheader_green {
+    background-color:#090;
+    font-weight:700;
+    font-size:12px;
+    font-family:Tahoma, Verdana, Arial, Helvetica;
+    background-image:url("../images/cell_green_grad.gif");
+    background-repeat:repeat-x;
+    height:24px;
+}
+.tablenote td {
+    background-color:#eee;
+    font-size:11px;
+    font-family:Tahoma,Verdana,Arial,Helvetica;
+}
+.signupSubmit {
+    width:150px;
+    height:40px;
+    font:100% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    font-weight:bold;
+    -webkit-appearance:button;
+}
+.signupLabel {
+    font-size:18px;
+    font-weight:bold;
+    color:#555555;
+    margin-left:1px;
+    font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+.signupText {
+    font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    font-size:14px;
+}
+.signup_note {
+    color:#777777;
+    font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    font-size:12px;
+}
+.signupPlanTable {
+    margin-top:1px;
+}
+.signupPlanTable th {
+    text-align:left;
+    font:bold 80% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    height:28px;
+    background-image:url(../images/furley_bg.png);
+}
+.signupPlanTable td {
+    font:90%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    height:30px;
+}
+.signupPlanName {
+    color:green;
+    font-weight:bold;
+}
+#signupPlanPrice {
+    font-size:18px;
+    font-weight:bold;
+    color:#444444;
+}
+form#signup input[type=text] {
+    border:2px solid #bbbbbb;
+    font-size:18px;
+    padding:2px;
+    margin-top:1px;
+    margin-right:10px;
+    margin-bottom:2px;
+    font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}

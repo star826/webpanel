@@ -1,0 +1,5 @@
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+ErrorDocument 404 /inc/404.php
+order deny,allow
