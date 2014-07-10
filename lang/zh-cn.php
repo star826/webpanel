@@ -1,5 +1,6 @@
-﻿<?php
-
+<?php
+// Modify : nightgod (davidng530@gmail.com)
+// Date : 2014 / 07 / 11
 // access_denied.php
 $lang['access_denied'] = '访问被拒绝';
 $lang['access_denied_text'] = '很抱歉，你没有足够的权限访问这个对象或执行此操作。';
@@ -189,18 +190,18 @@ $lang['domain_status_edit_mode'] = '编辑模式 - 使用这种模式，同时�
 $lang['advanced_settings'] = '高级设置';
 $lang['default'] = '默认';
 $lang['default_ttl_hint'] = '定义在该区域的所有条目的默认生存时间';
-$lang['default_refresh_rate_hint'] = 'Determines how often the secondary/slave nameservers check with the master for updates';
-$lang['default_retry_rate_hint'] = 'The amount of time the secondary/slave nameservers will wait to contact the master nameserver again if the last attempt failed';
-$lang['expire_rate'] = 'Expire Rate';
-$lang['default_expire_rate_hint'] = 'How long a secondary/slave nameserver will wait before considering its DNS data stale if it can\'t reach the primary nameserver';
+$lang['default_refresh_rate_hint'] = '确定二级/从域名服务器检查的频率，与主更新';
+$lang['default_retry_rate_hint'] = '如果最后尝试失败的时间 二级/从域名服务器将等待再次联系主域名服务器.';
+$lang['expire_rate'] = '到期';
+$lang['default_expire_rate_hint'] = '多久二级/从域名服务器会才考虑它的DNS数据陈旧的等待，如果它可以\'到达主域名服务器';
 $lang['create_change_record_success'] = '创建/更改记录成功';
 $lang['edit_resource_record'] = '编辑资源记录';
 $lang['add_edit_an_ns_record'] = '添加/编辑NS记录';
 $lang['name_server_hint'] = '例: ns1.domain.com';
-$lang['subdomain_hint'] = 'Leave this blank unless you\'re delegating a subdomain to the nameserver above';
+$lang['subdomain_hint'] = '离开这个空白，除非你\'重新委派子域的域名服务器上面';
 $lang['add_edit_an_mx_record'] = '添加/编辑MX记录';
 $lang['mail_server_hint'] = '例: mail2.example.com';
-$lang['mx_subdomain_hint'] = 'Leave blank unless delegating a subdomain to the mail server above. A wildcard is also valid here.';
+$lang['mx_subdomain_hint'] = '保留为空，除非委派子域的邮件服务器上。通配符也是有效的在这里.';
 $lang['add_edit_an_a_aaaa_record'] = '添加/编辑A/AAAA记录';
 $lang['hostname_hint'] = '例: www.example.com';
 $lang['add_edit_an_cname_record'] = '添加/编辑CNAME记录';
@@ -269,9 +270,11 @@ $lang['datetime_now'] = '现在';
 
 
 // Linodes
-$lang['linode'] = '节点';
-$lang['linodes'] = '主机名';
-$lang['linodeplans'] = '节点套餐';
+// Modify : nightgod (davidng530@gmail.com)
+// Date : 2014 / 07 / 11
+$lang['linode'] = '主机';
+$lang['linodes'] = '主机节点';
+$lang['linodeplans'] = '主机计划';
 $lang['datacenters'] = '数据中心';
 $lang['distributions'] = '分配';
 $lang['kernels'] = '内核';
