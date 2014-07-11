@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version phpStudy 2014
+-- version 4.2.5
 -- http://www.phpmyadmin.net
 --
--- 主机: localhost
--- 生成日期: 2014 年 05 月 31 日 12:19
--- 服务器版本: 5.5.36
--- PHP 版本: 5.3.28
+-- Host: localhost
+-- Generation Time: 2014-07-11 18:45:45
+-- 服务器版本： 10.0.12-MariaDB-log
+-- PHP Version: 5.4.30
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `nginxmanager`
+-- Database: `webpanel`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tickets` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `TicketID` int(11) DEFAULT NULL,
   `Summary` varchar(255) DEFAULT NULL,
   `Description` text NOT NULL,
@@ -39,8 +39,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `ClosedOn` datetime DEFAULT NULL,
   `ClosedBy` int(11) DEFAULT NULL,
   `Regarding` varchar(255) DEFAULT NULL,
-  `RegardingURL` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `RegardingURL` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -50,15 +49,12 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `api_key` varchar(255) DEFAULT NULL,
-  `locked` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
+  `locked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -75,7 +71,7 @@ INSERT INTO `users` (`ID`, `username`, `password`, `email`, `api_key`, `locked`)
 --
 
 CREATE TABLE IF NOT EXISTS `users_billing` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `Parent` int(11) DEFAULT NULL,
   `UserID` int(11) NOT NULL,
   `type` int(1) NOT NULL COMMENT '0 充值 1 订单 2 续费',
@@ -85,8 +81,7 @@ CREATE TABLE IF NOT EXISTS `users_billing` (
   `description` varchar(255) NOT NULL,
   `One_time_fee` double DEFAULT '0',
   `amount` double NOT NULL,
-  `paid` int(1) DEFAULT '0',
-  PRIMARY KEY (`ID`)
+  `paid` int(1) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -131,10 +126,9 @@ INSERT INTO `users_extension` (`UserID`, `credit`, `companyname`, `email`, `firs
 --
 
 CREATE TABLE IF NOT EXISTS `users_forgot` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `token` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -144,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `users_forgot` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `owner` int(11) NOT NULL,
   `serverID` int(11) DEFAULT NULL,
   `orderID` int(11) NOT NULL,
@@ -167,8 +161,7 @@ CREATE TABLE IF NOT EXISTS `vhost` (
   `subdomain` int(11) DEFAULT NULL,
   `addon` int(11) DEFAULT '0' COMMENT '附加域',
   `ftp` int(11) DEFAULT NULL,
-  `price` double NOT NULL,
-  PRIMARY KEY (`ID`)
+  `price` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -178,15 +171,14 @@ CREATE TABLE IF NOT EXISTS `vhost` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_app` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `sort` int(11) NOT NULL,
   `app_name` varchar(255) NOT NULL,
   `app_version` varchar(255) NOT NULL,
   `app_site` varchar(255) CHARACTER SET ucs2 NOT NULL,
   `app_dl_url` varchar(255) NOT NULL,
   `app_image` varchar(255) NOT NULL,
-  `app_localpath` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `app_localpath` varchar(255) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
@@ -207,7 +199,7 @@ INSERT INTO `vhost_app` (`ID`, `sort`, `app_name`, `app_version`, `app_site`, `a
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_ftp` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `VhostID` int(11) NOT NULL,
   `ServerID` int(11) NOT NULL,
   `User` varchar(16) NOT NULL DEFAULT '',
@@ -224,8 +216,7 @@ CREATE TABLE IF NOT EXISTS `vhost_ftp` (
   `Comment` tinytext,
   `Status` enum('0','1') NOT NULL DEFAULT '1',
   `ULRatio` smallint(5) NOT NULL DEFAULT '1',
-  `DLRatio` smallint(5) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`ID`)
+  `DLRatio` smallint(5) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -235,14 +226,13 @@ CREATE TABLE IF NOT EXISTS `vhost_ftp` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_job_queue` (
-  `JobID` int(11) NOT NULL AUTO_INCREMENT,
+`JobID` int(11) NOT NULL,
   `VhostID` int(11) NOT NULL,
   `Action` varchar(255) NOT NULL,
   `Result` varchar(255) NOT NULL,
   `Entered` datetime NOT NULL,
   `Started` datetime NOT NULL,
-  `Finished` datetime NOT NULL,
-  PRIMARY KEY (`JobID`)
+  `Finished` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -252,15 +242,13 @@ CREATE TABLE IF NOT EXISTS `vhost_job_queue` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_mysql_db` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `VhostID` int(11) NOT NULL,
   `ServerID` int(11) NOT NULL,
   `User` varchar(255) NOT NULL,
   `Host` varchar(255) NOT NULL DEFAULT 'localhost',
   `Password` varchar(255) NOT NULL,
-  `DB` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID` (`ID`)
+  `DB` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -270,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `vhost_mysql_db` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_nginx_conf` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `vhostID` int(11) NOT NULL,
   `serverID` int(11) DEFAULT NULL,
   `type` varchar(255) NOT NULL DEFAULT 'main',
@@ -295,8 +283,7 @@ CREATE TABLE IF NOT EXISTS `vhost_nginx_conf` (
   `ssl` int(1) DEFAULT NULL,
   `ssl_certificate` text,
   `ssl_certificate_key` text,
-  `ssl_certificate_ca` text,
-  PRIMARY KEY (`ID`)
+  `ssl_certificate_ca` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -306,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `vhost_nginx_conf` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_plan` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `sort` int(11) DEFAULT NULL,
   `checked` int(11) NOT NULL,
   `hidden` int(11) DEFAULT '0',
@@ -321,8 +308,7 @@ CREATE TABLE IF NOT EXISTS `vhost_plan` (
   `addon` int(11) NOT NULL DEFAULT '0' COMMENT '附加域',
   `ftp` int(11) NOT NULL,
   `price` double NOT NULL,
-  `available` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `available` int(11) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
@@ -340,7 +326,7 @@ INSERT INTO `vhost_plan` (`ID`, `sort`, `checked`, `hidden`, `planname`, `cycle`
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_servers` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `alias` varchar(255) DEFAULT NULL,
   `root` varchar(255) NOT NULL,
   `passwd` varchar(255) NOT NULL,
@@ -365,8 +351,7 @@ CREATE TABLE IF NOT EXISTS `vhost_servers` (
   `netInput` varchar(255) DEFAULT NULL,
   `netOut` varchar(255) DEFAULT NULL,
   `downtime` int(1) NOT NULL DEFAULT '0',
-  `lastupdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `lastupdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
@@ -383,13 +368,12 @@ INSERT INTO `vhost_servers` (`ID`, `alias`, `root`, `passwd`, `mysqlpasswd`, `ip
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_server_ips` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `serverID` int(11) NOT NULL,
   `IPv` int(1) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Private` int(1) DEFAULT '0',
-  `VhostID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `VhostID` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -399,11 +383,10 @@ CREATE TABLE IF NOT EXISTS `vhost_server_ips` (
 --
 
 CREATE TABLE IF NOT EXISTS `vhost_static` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `class` varchar(255) NOT NULL,
   `program` varchar(255) NOT NULL,
-  `rewrite` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `rewrite` text NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
@@ -419,6 +402,168 @@ INSERT INTO `vhost_static` (`ID`, `class`, `program`, `rewrite`) VALUES
 (9, 'other', 'ownCloud', 'if ($http_referer ~* "www\\.17ce\\.com") {\n	return 200;\n}\nif ($http_user_agent ~* "webbench|ApacheBench|JoeDog") {\n	return 200;\n}\nif ($http_user_agent ~ ^$) {\n	return 200;\n}\n\nlocation / {\nif (!-f $request_filename){\n                rewrite (.*) /index.php;\n        }\n}'),
 (8, 'other', '空', 'if ($http_referer ~* "www\\.17ce\\.com") {\n	return 200;\n}\nif ($http_user_agent ~* "webbench|ApacheBench|JoeDog") {\n	return 200;\n}\nif ($http_user_agent ~ ^$) {\n	return 200;\n}');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`ID`), ADD UNIQUE KEY `username` (`username`), ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `users_billing`
+--
+ALTER TABLE `users_billing`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `users_forgot`
+--
+ALTER TABLE `users_forgot`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost`
+--
+ALTER TABLE `vhost`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_app`
+--
+ALTER TABLE `vhost_app`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_ftp`
+--
+ALTER TABLE `vhost_ftp`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_job_queue`
+--
+ALTER TABLE `vhost_job_queue`
+ ADD PRIMARY KEY (`JobID`);
+
+--
+-- Indexes for table `vhost_mysql_db`
+--
+ALTER TABLE `vhost_mysql_db`
+ ADD PRIMARY KEY (`ID`), ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `vhost_nginx_conf`
+--
+ALTER TABLE `vhost_nginx_conf`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_plan`
+--
+ALTER TABLE `vhost_plan`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_servers`
+--
+ALTER TABLE `vhost_servers`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_server_ips`
+--
+ALTER TABLE `vhost_server_ips`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vhost_static`
+--
+ALTER TABLE `vhost_static`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `users_billing`
+--
+ALTER TABLE `users_billing`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users_forgot`
+--
+ALTER TABLE `users_forgot`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost`
+--
+ALTER TABLE `vhost`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_app`
+--
+ALTER TABLE `vhost_app`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `vhost_ftp`
+--
+ALTER TABLE `vhost_ftp`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_job_queue`
+--
+ALTER TABLE `vhost_job_queue`
+MODIFY `JobID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_mysql_db`
+--
+ALTER TABLE `vhost_mysql_db`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_nginx_conf`
+--
+ALTER TABLE `vhost_nginx_conf`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_plan`
+--
+ALTER TABLE `vhost_plan`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `vhost_servers`
+--
+ALTER TABLE `vhost_servers`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `vhost_server_ips`
+--
+ALTER TABLE `vhost_server_ips`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vhost_static`
+--
+ALTER TABLE `vhost_static`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
