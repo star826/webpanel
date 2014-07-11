@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `users_extension` (
 --
 
 INSERT INTO `users_extension` (`UserID`, `credit`, `companyname`, `email`, `firstname`, `lastname`, `address1`, `address2`, `city`, `state`, `zip`, `country`, `phone1`, `phone2`, `qq`, `regdate`, `regip`, `lastlogindate`, `lastloginip`) VALUES
-(1, 888888, '', 'admin@admin.com', '', '', '', '', '', '', '', '', '', '', '', '2014-05-31 09:00:00', '127.0.0.1', '2014-05-31 10:35:08', '192.168.199.121');
+(1, 888888, '', 'admin@admin.com', '', '', '', '', '', '', '', '', '', '', '', '2014-05-31 09:00:00', '127.0.0.1', '2014-07-10 10:35:08', '127.0.0.1');
 
 -- --------------------------------------------------------
 
