@@ -52,12 +52,6 @@ $page_start_time = get_microtime();
 							echo '<span class="notification yellow">'.mysql_num_rows($result_tickets).'</span>';
 						?></a></li>
 						<li><a href="admin_system.php">系统</a></li>
-						<?php if (empty($adminpage)){ ?>
-							?><li><a href="admin_system.php">切换到-<?php echo $lang['admin_panel']; ?></a></li><?php
-						} else {
-							?><li><a href="vhost.php">切换到-<?php echo $lang['user_panel']; ?></a><?php
-						}
-						?>
 					<?php } else { ?>
 						<li><a href="profile.php"><?php echo $_SESSION['username']; ?></a></li>
 						<li><a href="vhost.php"><?php echo $lang['vhosts']; ?><?php
@@ -81,6 +75,13 @@ $page_start_time = get_microtime();
 							echo '<span class="notification yellow">'.mysql_num_rows($result_tickets).'</span>';
 						?></a></li>
 						<li><a href="logout.php"><?php echo $lang['log_out']; ?></a></li>
+					<?php } ?>
+					<?php if (IsAdmin()) { ?>
+					<?php if (empty($adminpage)){ ?>
+						<li><a href="admin_system.php">切换到-<?php echo $lang['admin_panel']; ?></a></li>
+					<?php } else { ?>
+						<li><a href="vhost.php">切换到-<?php echo $lang['user_panel']; ?></a>
+					<?php } ?>
 					<?php } ?>
 			</ul>
 		</div>
