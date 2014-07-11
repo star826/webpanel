@@ -2,10 +2,10 @@
 /****************************************
 *              服务商配置               *
 ****************************************/
-$PanelName = 'Nginx'; // 主机商名称
-$PanelSubName = 'Manager'; // 面板名称
-$SiteDomain = 'nginxmanager.com'; // 主站域名
-$PanelDomain = 'cp.nginxmanager.com'; // 管理面板域名
+$PanelName = 'Web'; // 主机商名称
+$PanelSubName = 'Panel'; // 面板名称
+$SiteDomain = 'www.lnmpv.com'; // 主站域名
+$PanelDomain = 'cp.lnmpv.com'; // 管理面板域名
 $statisticalCode = '<div style="display:none"></div>'; // 统计代码
 /****************************************
 *             计划任务配置              *
@@ -33,9 +33,9 @@ $aliapy_config['transport']    = 'http';
 *              数据库配置               *
 ****************************************/
 $host = 'localhost';              // 主机
-$user = 'nginxmanager';           // 用户名
+$user = 'webpanel';           // 用户名
 $password = 'tmppasswd';          // 密码
-$database = 'nginxmanager';       // 数据库
+$database = 'webpanel';       // 数据库
 
 /****************************************
 *           下面的就不要改了            *
