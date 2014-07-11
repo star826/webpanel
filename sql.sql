@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014-07-11 18:45:45
+-- Generation Time: 2014-07-11 20:14:57
 -- 服务器版本： 10.0.12-MariaDB-log
 -- PHP Version: 5.4.30
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `users_extension` (
 --
 
 INSERT INTO `users_extension` (`UserID`, `credit`, `companyname`, `email`, `firstname`, `lastname`, `address1`, `address2`, `city`, `state`, `zip`, `country`, `phone1`, `phone2`, `qq`, `regdate`, `regip`, `lastlogindate`, `lastloginip`) VALUES
-(1, 888888, '', 'admin@admin.com', '', '', '', '', '', '', '', '', '', '', '', '2014-05-31 09:00:00', '127.0.0.1', '2014-07-10 10:35:08', '127.0.0.1');
+(1, 888888, '', 'admin@admin.com', '', '', '', '', '', '', '', '', '', '', '', '1970-01-01 00:00:00', '127.0.0.1', '1970-01-01 00:00:00', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -311,14 +311,6 @@ CREATE TABLE IF NOT EXISTS `vhost_plan` (
   `available` int(11) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
---
--- 转存表中的数据 `vhost_plan`
---
-
-INSERT INTO `vhost_plan` (`ID`, `sort`, `checked`, `hidden`, `planname`, `cycle`, `nodes`, `backup`, `space`, `webtraffic`, `db`, `subdomain`, `addon`, `ftp`, `price`, `available`) VALUES
-(1, 1, 1, 0, '本机空间', 1, 'LOCAL', 0, 5000, 1000, 10, 10, 10, 10, 10, 1),
-(2, 2, 0, 1, 'hr', 0, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -353,13 +345,6 @@ CREATE TABLE IF NOT EXISTS `vhost_servers` (
   `downtime` int(1) NOT NULL DEFAULT '0',
   `lastupdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
-
---
--- 转存表中的数据 `vhost_servers`
---
-
-INSERT INTO `vhost_servers` (`ID`, `alias`, `root`, `passwd`, `mysqlpasswd`, `ip`, `port`, `location`, `hidden`, `vhostTotal`, `vhostFree`, `cpucore`, `cpuinfo`, `uptime`, `uptimedays`, `loadaverage`, `memTotal`, `memFree`, `swapTotal`, `swapFree`, `diskTotal`, `diskFree`, `netInput`, `netOut`, `downtime`, `lastupdate`) VALUES
-(30, 'LOCAL', 'root', 'rootpwd', 'mysqlpwd', '127.0.0.1', '22', '本机', 0, 500, 500, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2014-05-31 11:58:40');
 
 -- --------------------------------------------------------
 
