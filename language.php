@@ -1,7 +1,8 @@
 <?php 
 @include_once("session.php");
-$_SESSION['language'] = 'zh-cn';
-/* if (empty($_SESSION['language'])) {	
+//$_SESSION['language'] = 'zh-cn';
+/*
+if (empty($_SESSION['language'])) {	
 	foreach (explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']) as $lang_) {
 		$pattern_ = '/^(?P<primarytag>[a-zA-Z]{2,8})'.
 		'(?:-(?P<subtag>[a-zA-Z]{2,8}))?(?:(?:;q=)'.
@@ -20,7 +21,15 @@ $_SESSION['language'] = 'zh-cn';
 	if (!isset($_SESSION['language'])) {
 		$_SESSION['language'] = 'en';
 	}
-} */
+}
+*/
+if(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5) == 'zh-CN'){
+	$_SESSION['language'] = 'zh-cn';
+}else if(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5) == 'zh-TW'){
+	$_SESSION['language'] = 'zh-tw';
+}else{
+	$_SESSION['language'] = 'en';
+}
 if (!file_exists("lang/".$_SESSION['language'].".php")) $_SESSION['language'] = 'en';
 @include_once("lang/".$_SESSION['language'].".php");
 function lang($langtag) {
