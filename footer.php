@@ -4,7 +4,7 @@ if (empty($page) && empty($adminpage)) ForceDie();
 ForceLogin();
 ?>
 <br />
-<p style="color:#000000;font-size:14px;">NginxManager Web Control Panel For LNMP &copy; 2014 Processed in <?php echo round(get_microtime()-$page_start_time,6); ?> second(s) <br /><br />
+<p style="color:#000000;font-size:14px;">&copy; 2014 Web Control Panel For <a href="http://www.lnmpv.com">LNMPV</a> Processed in <?php echo round(get_microtime()-$page_start_time,6); ?> second(s) <br /><br />
 <?php if (IsAdmin()) { ?>
  <?php
 if (empty($adminpage)){
