@@ -146,12 +146,12 @@ if (count($err))
 	</tr>
 	<tr class="list_entry">
 		<td class="table_form_header">Linux Root</td>
-		<td><input name="passwd" id="passwd" type="text" value="<?php echo @$row_server['passwd']?$row_server['passwd']:$passwd; ?>" autocomplete="off" required /><br /></td>
+		<td><input name="passwd" id="passwd" type="password" value="<?php echo @$row_server['passwd']?$row_server['passwd']:$passwd; ?>" autocomplete="off" required /><br /></td>
 		<td class="hint"></td>
 	</tr>
 	<tr class="list_entry">
 		<td class="table_form_header">MySQL Root</td>
-		<td><input name="mysqlpasswd" id="mysqlpasswd" type="text" value="<?php echo @$row_server['mysqlpasswd']?$row_server['mysqlpasswd']:$mysqlpasswd; ?>" autocomplete="off" required /><br /></td>
+		<td><input name="mysqlpasswd" id="mysqlpasswd" type="password" value="<?php echo @$row_server['mysqlpasswd']?$row_server['mysqlpasswd']:$mysqlpasswd; ?>" autocomplete="off" required /><br /></td>
 		<td class="hint"></td>
 	</tr>
 	<tr class="list_entry">
