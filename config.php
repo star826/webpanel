@@ -8,6 +8,10 @@ $SiteDomain = 'www.lnmpv.com'; // 主站域名
 $PanelDomain = 'cp.lnmpv.com'; // 管理面板域名
 $statisticalCode = '<div style="display:none"></div>'; // 统计代码
 /****************************************
+*             注册开关配置              *
+****************************************/
+$RegSwitch = 'false'; //true是开放注册 false是关闭注册
+/****************************************
 *             计划任务配置              *
 ****************************************/
 $TaskAPI = ''; //执行任务API, 请随机生成并填写一个
@@ -33,8 +37,8 @@ $aliapy_config['transport']    = 'http';
 *              数据库配置               *
 ****************************************/
 $host = 'localhost';              // 主机
-$user = 'webpanel';           // 用户名
-$password = 'tmppasswd';          // 密码
+$user = 'root';           // 用户名
+$password = 'Wangqingqing=77';          // 密码
 $database = 'webpanel';       // 数据库
 
 /****************************************
