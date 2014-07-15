@@ -24,7 +24,7 @@ $adminpage = "admin_system.php";
 	<td class="table_form_header">注册状态</td>
 	  <td>
 			<?php
-				if(!$RegSwitch){
+				if($RegSwitch){
 					echo "<span style=\"color: green\">开放注册</span><br />";
 				}else{
 					echo "<span style=\"color: red\">注册关闭</span><br />";
