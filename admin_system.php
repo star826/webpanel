@@ -1,6 +1,6 @@
 <?php
 
-$current_version = '1.5';
+$current_version = 'V0.1';
 
 if (@$_GET['phpinfo'])	die(phpinfo());
 $adminpage = "admin_system.php";
@@ -19,6 +19,19 @@ $adminpage = "admin_system.php";
 	<tr class="list_entry">
 		<td class="table_form_header">当前版本</td>
 		<td><span style="color: green"><?php echo $current_version; ?></span><br></td>
+	</tr>
+	<tr class="list_entry">
+	<td class="table_form_header">注册状态</td>
+	  <td>
+			<?php
+				if(!$RegSwitch){
+					echo "<span style=\"color: green\">开放注册</span><br />";
+				}else{
+					echo "<span style=\"color: red\">注册关闭</span><br />";
+				}			
+			?>
+		</td>
+		<td class="hint"></td>
 	</tr>
 </table>
 </div>
