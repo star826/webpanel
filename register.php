@@ -4,6 +4,7 @@
 @include_once("config.php");
 @include_once("function.php");
 @include_once("alert_function.php");
+
 if(IsUser())
 {
 	header( "HTTP/1.1 301 Moved Permanently" );    
@@ -110,6 +111,16 @@ function CheckForm()
 <div id="page">
 <br /><br /><br />
 <br /><br />
+
+<?php
+if($RegSwitch){
+	echo "<h1 style=\"color:#fff;\">对不起，注册已关闭 3秒后自动跳转</h1>"; 
+	echo "<h5 style=\"color:#fff;\">如果浏览器不支持自动跳转，请点击<a href=\"http://$SiteDomain\">链接</a></h5>"; 
+	echo "<meta http-equiv=Refresh content=3;URL=http://$SiteDomain>";
+	die;
+}
+?>
+
 <form name="CFForm_1" id="CFForm_1" action="" method="post" onsubmit="return CheckForm();">
 	<div id="login">
 		<h1><?php echo $lang['register']; ?></h1>
